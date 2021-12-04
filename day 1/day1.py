@@ -1,9 +1,8 @@
 with open('input.txt', 'r') as f:
-    counter = 0
+    counter: int = 0
     prev_num: float = float(f.readline())
 
-    for i,line in enumerate(f):
-
+    for i, line in enumerate(f):
         num = float(line)
         if num > prev_num:
             counter += 1
