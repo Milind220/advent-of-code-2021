@@ -8,7 +8,7 @@ for line in lines:
     direction, magnitude = line.split()
     magnitude = int(magnitude)
 
-    if direction == 'horizontal':
+    if direction == 'forward':
         hor_pos += magnitude
     
     elif direction == 'up':
