@@ -1,21 +1,21 @@
 with open('input.txt', 'r') as f:
     lines = f.readlines()
 
-hor_pos: int = 0
-depth_pos: int = 0
+hor: int = 0
+depth: int = 0
 
 for line in lines:
     direction, magnitude = line.split()
     magnitude = int(magnitude)
 
     if direction == 'forward':
-        hor_pos += magnitude
+        hor += magnitude
     
     elif direction == 'up':
-        depth_pos -= magnitude
+        depth -= magnitude
     
     else:
-        depth_pos += magnitude
+        depth += magnitude
     
-final_pos: int = hor_pos * depth_pos
+final_pos: int = hor * depth
 print(final_pos)
