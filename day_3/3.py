@@ -39,7 +39,7 @@ def convert_to_decimal(binary_string: str) -> int:
 
 
 # Part 2 functions
-def most_common_bit(input_list: List[str], index: int, oxy:bool = False) -> str:
+def most_common_bit(input_list: List[str], index: int) -> str:
     num_ones: int = 0
     for num in input_list:
         if num[index] == '1':
@@ -47,14 +47,17 @@ def most_common_bit(input_list: List[str], index: int, oxy:bool = False) -> str:
     
     if num_ones > len(input_list)/2:
         return '1'
-    elif (num_ones == len(input_list)/2) and oxy:
-        return '1'
+    elif (num_ones == len(input_list)/2):
+        return '-1'
     else:
         return '0'
 
 
 def trim_oxygen_list(input_list: List[str], index: int, bit: str) -> None:
     """Mutates the list directly."""
+    if bit == '-1':
+        bit = '1'
+
     while True:
         start = 0
         for i, num in enumerate(input_list):
@@ -73,6 +76,8 @@ def trim_carbon_dioxide_list(input_list: List[str],
                        index: int,
                        bit: str
                        ) -> None:
+    if bit == '-1':
+        bit = '1'
     while True:
         start = 0
         for i, num in enumerate(input_list):
@@ -108,19 +113,17 @@ def part_2() -> int:
     co2_list: List[str] = input.copy()
 
     for i in range(12):
-        check_bit = most_common_bit(o2_list, index = i, oxy = True)
+        check_bit = most_common_bit(o2_list, index = i)
         trim_oxygen_list(o2_list, index = i, bit = check_bit)
         if len(o2_list) == 1:
             break
-    
     oxygen_decimal_rating: int = convert_to_decimal(o2_list[0])
     
     for i in range(12):
-        check_bit = most_common_bit(co2_list, index = i, oxy = False)
+        check_bit = most_common_bit(co2_list, index = i)
         trim_carbon_dioxide_list(co2_list, index = i, bit = check_bit)
         if len(co2_list) == 1:
             break
-
     carbon_decimal_rating: int = convert_to_decimal(co2_list[0])
 
     return carbon_decimal_rating * oxygen_decimal_rating
@@ -128,3 +131,4 @@ def part_2() -> int:
 
 if __name__ == '__main__':
     print(part_2())
+    # print(part_1())
