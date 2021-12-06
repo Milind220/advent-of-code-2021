@@ -1,4 +1,6 @@
-# Imports
+"""Advent of Code 2021: Day 4, part 1 and 2. https://adventofcode.com/2021/day/4 """
+
+
 from typing import List
 
 import numpy as np
