@@ -1,3 +1,4 @@
+# Imports
 from typing import List
 
 import numpy as np
@@ -27,7 +28,7 @@ def eject_num(num: int, array: np.ndarray) -> np.ndarray:
 
 def check_win(matrix_list: np.ndarray) -> int:
     for i, matrix in enumerate(matrix_list):
-        # Check row win condition
+        # Check row and column win condition.
         for row in matrix:
             if np.sum(row) == 0:
                 return i
@@ -35,7 +36,6 @@ def check_win(matrix_list: np.ndarray) -> int:
         for col in np.transpose(matrix):
             if np.sum(col) == 0:
                 return i
-    
     return -1
 
 
@@ -77,7 +77,3 @@ def part_2() -> None:
 
 if __name__ == '__main__':
     part_1()
-
-
-
-    
