@@ -54,8 +54,7 @@ def part_1() -> None:
     input_data = get_data('input.txt')
 
     roll_call = [int(num) for num in input_data.pop(0)[0].split(',')]
-    original_matrix_list = format_array(input_data)
-    matrix_list = original_matrix_list.copy()
+    matrix_list = format_array(input_data)
 
     mat_ind = -1
     winning_number = 0
