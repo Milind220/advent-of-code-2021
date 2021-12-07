@@ -1,6 +1,6 @@
 # Advent of Code 2021
 
-My Python solutions for the Advent of Code 2021 challenge!
+My Python solutions for the [Advent of Code 2021](https://adventofcode.com/2021/about) challenge!
 
 Made a little private leaderboard for me and my friends at CityU too!
 
