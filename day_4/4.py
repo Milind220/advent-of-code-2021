@@ -1,7 +1,7 @@
-"""Advent of Code 2021: Day 4, part 1 and 2. https://adventofcode.com/2021/day/4 """
+"""Advent of Code 2021: Day 4, part 1. https://adventofcode.com/2021/day/4 """
 
 
-from typing import List
+from typing import List, Tuple
 
 import numpy as np
 
@@ -45,10 +45,6 @@ def get_matrix_sum(matrix_list: np.ndarray, index: int) -> int:
     return np.sum(matrix_list[index])
 
 
-# Part 2 function definitions
-
-
-
 # Main functions
 def part_1() -> None:
     input_data = get_data('input.txt')
@@ -58,6 +54,8 @@ def part_1() -> None:
 
     mat_ind = -1
     winning_number = 0
+    won_matrices: List[List] = []
+
     for i, num in enumerate(roll_call):
         matrix_list = eject_num(num, matrix_list)
         if i > 3: # Index 4 onwards there's a possibility of a matrix having won.
@@ -65,15 +63,11 @@ def part_1() -> None:
             # Check for winner matrix
             mat_ind = check_win(matrix_list)
             if mat_ind != -1:
-                winning_number: int  = num
+                winning_number = num
                 break
-             
+    
     mat_sum = get_matrix_sum(matrix_list, mat_ind)
     print(mat_sum * winning_number)
-
-
-def part_2() -> None:
-    pass
 
 
 if __name__ == '__main__':
