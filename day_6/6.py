@@ -31,12 +31,19 @@ def part_1(array: List[int]) -> int:
     # Answer for part 1 was 360761.
 
 
+def part_2(array: List[int]) -> int:
+
+    return 1
+
+
 def main():
     raw_data: List[int] = get_input_data('input.txt')
-    ans_one = part_1(raw_data)
-    
-    print(ans_one) # 360761
-    
+    ans_two = part_2(raw_data)
+    #ans_one = part_1(raw_data)
+
+    #print(ans_one) # 360761
+    print(ans_two)
+
 
 if __name__ == '__main__':
     main()
