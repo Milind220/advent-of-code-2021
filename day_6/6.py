@@ -2,7 +2,10 @@
 
 from typing import List
 
-import numpy as np
+import collections
+
+
+Deque = collections.deque
 
 
 def get_input_data(filename: str) -> List[int]:
@@ -20,8 +23,7 @@ def reset_fish(fish_list: List[int]) -> List[int]:
     return [6 if x == -1 else x for x in fish_list]
 
 
-def part_1(array: List[int]) -> int:
-    days: int = 80
+def part_1(array: List[int], days: int = 18) -> int:
     for day in range(days):
         array = pass_day(array)
         new_fish: int = array.count(-1)
@@ -34,27 +36,31 @@ def part_1(array: List[int]) -> int:
     # Answer for part 1 was 360761.
 
 
-def part_2(arr: List[int]) -> int:
-    fish_arr: np.ndarray = np.array(arr, dtype = np.int8)
+def part_2(arr: List[int], days: int = 18) -> int:
+    tracker: Deque[int] = collections.deque([arr.count(i) for i in range(9)])
     
-    days: int = 256
     for day in range(days):
-        print(day)
-        fish_arr = fish_arr - 1  # pass a single day
-        new_fish = np.count_nonzero(fish_arr == -1)
-        fish_arr[fish_arr == -1] = np.int8(6)
+        print(tracker)
+        new_fish = tracker[0]
+        tracker.rotate(-1)
+        tracker[5] += new_fish
+        
+    return sum(tracker)
 
-        if new_fish:
-            fish_arr = np.append(fish_arr, 8 * np.ones(new_fish, dtype = np.int8))
 
-    return len(fish_arr)    
+# def solve(data, days):
+#     
+#     for day in range(days):
+#         tracker[(day + 7) % 9] += tracker[day % 9]
+#     return sum(tracker)
+#     # 26984457539
 
 
 def main():
     raw_data: List[int] = get_input_data('test.txt')
     
-    #ans_one = part_1(raw_data)
-    ans_two = part_2(raw_data)
+    #ans_one = part_1(raw_data, 80)
+    ans_two = part_2(raw_data, 18)
 
     #print(ans_one) # 360761
     print(ans_two)
