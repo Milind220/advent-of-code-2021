@@ -5,6 +5,7 @@ from typing import List
 import collections
 
 
+# Type definition
 Deque = collections.deque
 
 
@@ -31,39 +32,31 @@ def part_1(array: List[int], days: int = 18) -> int:
         if new_fish:
             array.extend([8] * new_fish)
     
-    return len(array)
-
-    # Answer for part 1 was 360761.
+    return len(array)     # Answer for part 1 was 360761.
 
 
+# Part 2 functions
 def part_2(arr: List[int], days: int = 18) -> int:
     tracker: Deque[int] = collections.deque([arr.count(i) for i in range(9)])
-    
+
     for day in range(days):
-        print(tracker)
-        new_fish = tracker[0]
+        new_fish: int = 0
+        new_fish += tracker[0]
         tracker.rotate(-1)
-        tracker[5] += new_fish
+        tracker[6] += new_fish
         
-    return sum(tracker)
+    return sum(tracker)     # Answer for part 2 was 1632779838045.
 
 
-# def solve(data, days):
-#     
-#     for day in range(days):
-#         tracker[(day + 7) % 9] += tracker[day % 9]
-#     return sum(tracker)
-#     # 26984457539
-
-
+# Explicit main
 def main():
-    raw_data: List[int] = get_input_data('test.txt')
+    raw_data: List[int] = get_input_data('input.txt')
     
-    #ans_one = part_1(raw_data, 80)
-    ans_two = part_2(raw_data, 18)
+    ans_one: int = part_1(raw_data, 80)
+    ans_two: int = part_2(raw_data, 256)
 
-    #print(ans_one) # 360761
-    print(ans_two)
+    print(ans_one) # 360761
+    print(ans_two) # 1632779838045
 
 
 if __name__ == '__main__':
