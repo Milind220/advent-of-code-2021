@@ -31,6 +31,12 @@ def _calculate_total_fuel(arr: np.ndarray):
 
 def part_2(input_list: List[int]) -> int:
     arr: np.ndarray = np.array(input_list, dtype=np.int16)
+<<<<<<< HEAD
+=======
+
+    median: int = int(np.median(arr))
+    max: int = int(np.max(arr))
+>>>>>>> 4a02a83291c59f9047d603c75e8e8bfe6752156d
 
     mean: int = int(np.mean(arr))
 
