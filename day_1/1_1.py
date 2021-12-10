@@ -1,4 +1,4 @@
-with open('input.txt', 'r') as f:
+with open("input.txt", "r") as f:
     counter: int = 0
     prev_num: float = float(f.readline())
 
@@ -6,7 +6,7 @@ with open('input.txt', 'r') as f:
         num = float(line)
         if num > prev_num:
             counter += 1
-            
+
         prev_num = num
 
 print(counter)
