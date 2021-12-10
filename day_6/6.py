@@ -1,4 +1,4 @@
-"""Day 6 of Advent of Code 2021, part 1 and 2"""
+"""Day 6, part 1 and 2 of Advent Of Code https://adventofcode.com/2021/day/6 """
 
 from typing import List
 
