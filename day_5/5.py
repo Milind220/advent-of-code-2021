@@ -4,13 +4,16 @@ from typing import Dict, List, Tuple
 
 
 def get_input_data(filename: str) -> List[List[int]]:
-    d = [[int(x) for x in l.replace(" -> ", " ").replace(",", " ").split()] for l in open(filename,'rt')]
+    d = [
+        [int(x) for x in l.replace(" -> ", " ").replace(",", " ").split()]
+        for l in open(filename, "rt")
+    ]
     return d
 
 
 def main() -> None:
     """Single Explicit Main for both parts 1 and 2"""
-    d: List[List[int]] = get_input_data('input.txt')
+    d: List[List[int]] = get_input_data("input.txt")
 
     a: Dict[Tuple[int, int], int] = {}
     b: Dict[Tuple[int, int], int] = {}
@@ -37,16 +40,16 @@ def main() -> None:
             for x in range(x1, x2 + 1):
                 if y2 > y1:
                     y = y1 + (x - x1)
-                else:     
+                else:
                     y = y1 - (x - x1)
 
                 b[(x, y)] = b.get((x, y), 0) + 1
-    
+
     part_one_answer: int = sum(v > 1 for v in a.values())
     part_two_answer: int = sum(v > 1 for v in b.values())
 
-    print(f'Part 1: {part_one_answer}\nPart 2: {part_two_answer}')
+    print(f"Part 1: {part_one_answer}\nPart 2: {part_two_answer}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

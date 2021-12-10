@@ -5,20 +5,20 @@ from typing import List
 
 
 def main():
-    with open('input.txt') as f:
+    with open("input.txt") as f:
         lines = f.readlines()
-        lines.append('\n')
+        lines.append("\n")
 
     boards: List = []
     currentBoard: List = []
     for line in lines[2:]:
-        if line == '\n':
+        if line == "\n":
             boards.append(currentBoard)
             currentBoard: List = []
         else:
             currentBoard.append(list(map(int, line.split())))
 
-    chosenNumbers = list(map(int, lines[0].split(',')))
+    chosenNumbers = list(map(int, lines[0].split(",")))
     wonBingos = set()
     firstWin = -1
     lastWin = 0
@@ -57,10 +57,13 @@ def check_board(board) -> bool:
     boardT = tuple(zip(*board))
     SET_OF_NEGATIVE_ONE = set([-1])
     for i in range(len(board)):
-        if set(board[i]) == SET_OF_NEGATIVE_ONE or set(boardT[i]) == SET_OF_NEGATIVE_ONE:
+        if (
+            set(board[i]) == SET_OF_NEGATIVE_ONE
+            or set(boardT[i]) == SET_OF_NEGATIVE_ONE
+        ):
             return True
     return False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

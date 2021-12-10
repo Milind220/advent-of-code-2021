@@ -6,8 +6,8 @@ import numpy as np
 
 
 def get_input_data(filename: str) -> List[int]:
-    with open(filename, 'r') as f:
-        data = [int(x) for x in f.readline().split(',')]
+    with open(filename, "r") as f:
+        data = [int(x) for x in f.readline().split(",")]
     return data
 
 
@@ -16,7 +16,8 @@ def part_1(input_list: List[int]) -> int:
     arr: np.ndarray = np.array(input_list)
     ideal_position: float = np.median(arr)
 
-    return np.absolute(arr - ideal_position).sum()     # Answer to part 1 is 340987.
+    return np.absolute(arr - ideal_position).sum()
+    # Answer to part 1 is 340987.
 
 
 # Part 2 functions
@@ -25,7 +26,8 @@ def _calculate_fuel(total_steps: int) -> int:
 
 
 def part_2(input_list: List[int]) -> int:
-    arr: np.ndarray = np.array(input_list, dtype = np.int16)
+    arr: np.ndarray = np.array(input_list, dtype=np.int16)
+
     median: int = int(np.median(arr))
     max: int = int(np.max(arr))
 
@@ -42,13 +44,13 @@ def part_2(input_list: List[int]) -> int:
 
 # Explicit main
 def main():
-    input_data: List[int] = get_input_data('test.txt')
-    #ans_one: int = part_1(input_data)
+    input_data: List[int] = get_input_data("test.txt")
+    # ans_one: int = part_1(input_data)
     ans_two: int = part_2(input_data)
 
-    #print(ans_one)
+    # print(ans_one)
     print(ans_two)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
