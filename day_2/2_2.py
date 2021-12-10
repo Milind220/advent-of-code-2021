@@ -1,13 +1,17 @@
+from typing import List
+
+
 with open('input.txt', 'r') as f:
-    lines = f.readlines()
+    lines: List[str] = f.readlines()
 
 hor: int = 0
 depth: int = 0
 aim: int = 0
 
 for line in lines:
-    direction, magnitude = line.split()
-    magnitude = int(magnitude)
+    line_things: List[str] = line.split()
+    magnitude: int = int(line_things[1])
+    direction: str = line_things[0]
 
     if direction == 'forward':
         hor += magnitude
