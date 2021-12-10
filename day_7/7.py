@@ -21,34 +21,38 @@ def part_1(input_list: List[int]) -> int:
 
 
 # Part 2 functions
-def _calculate_fuel(total_steps: int) -> int:
-    return np.arange(1, total_steps + 1).sum()
+def _calculate_total_fuel(arr: np.ndarray):
+    steps_list: List[int] = arr.tolist()
+    total_fuel: int = int(
+        np.array([np.arange(1, x + 1, dtype=int).sum() for x in steps_list]).sum()
+    )
+    return total_fuel
 
 
 def part_2(input_list: List[int]) -> int:
     arr: np.ndarray = np.array(input_list, dtype=np.int16)
 
-    median: int = int(np.median(arr))
-    max: int = int(np.max(arr))
+    mean: int = int(np.mean(arr))
 
-    fuel: int = 3849573485397
-    for num in range(0, max + 1):
-        steps: int = np.absolute(arr - num).sum()
-        new_fuel: int = _calculate_fuel(steps)
+    fuel: int = 100000000000000  # Random very large number.
+    for num in range(mean - 5, mean + 5):
+        steps_arr: np.ndarray = np.absolute(arr - num)
+        new_fuel: int = _calculate_total_fuel(steps_arr)
 
         if new_fuel < fuel:
             fuel = new_fuel
 
     return fuel
+    # Answer to part 2 is 96987874.
 
 
 # Explicit main
 def main():
-    input_data: List[int] = get_input_data("test.txt")
-    # ans_one: int = part_1(input_data)
+    input_data: List[int] = get_input_data("input.txt")
+    ans_one: int = part_1(input_data)
     ans_two: int = part_2(input_data)
 
-    # print(ans_one)
+    print(ans_one)
     print(ans_two)
 
 
