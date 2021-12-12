@@ -1,10 +1,9 @@
 # Advent of Code 2021
 
-My Python solutions for the [Advent of Code 2021](https://adventofcode.com/2021/about) challenge!
+My solutions for the [Advent of Code 2021](https://adventofcode.com/2021/about) challenge, written in Python!
+Took the opportuinity to practice my Python and get more comfortable with numpy and algorithms in general.
 
-Made a little private leaderboard for me and my friends at CityU too!
-
-You can look at their solutions at:
+A few of my friends and I created a private leaderboard to compete with each other! You can find their solutions below:
 
 * [Alex Scriba](https://github.com/AlexScriba/AdventOfCode2021)
 * [Alibi Melis](https://github.com/AlibiMelis/Advent-of-Code-2021)
